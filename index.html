@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Demo Loan Application</title>
+<style>
+  body{margin:0;background:#F5F6F8;font-family:Arial}
+  .header{background:#0A2E65;color:white;text-align:center;padding:25px}
+  .card{background:white;max-width:480px;margin:-20px auto 30px;padding:25px;border-radius:20px;box-shadow:0 10px 30px rgba(0,0,0,.08)}
+  label{display:block;margin:12px 0 6px;font-weight:bold}
+  input,select,textarea{width:100%;padding:14px;border:1.5px solid #ccc;border-radius:10px}
+  button{width:100%;padding:14px;background:#0A2E65;color:white;border:none;border-radius:10px;font-weight:bold;cursor:pointer;margin-top:15px}
+</style>
+</head>
+<body>
+<div class="header">Demo Loan Application</div>
+<div class="card">
+  <label>Full Name</label><input id="fname" placeholder="John Doe">
+  <label>Loan Amount (UGX)</label><input id="amount" type="number" value="1000000">
+  <label>Purpose</label><textarea id="purpose" placeholder="Business, school fees..."></textarea>
+  <label>Phone (Uganda)</label><input id="phone" placeholder="7XXXXXXXX">
+  <button onclick="submitToWhatsApp()">SUBMIT TO WHATSAPP</button>
+</div>
+
+<script>
+function submitToWhatsApp(){
+  const name = document.getElementById('fname').value;
+  const amount = document.getElementById('amount').value;
+  const purpose = document.getElementById('purpose').value;
+  const phone = document.getElementById('phone').value;
+  
+  if(!name || !amount || !phone){ alert('Please fill all fields'); return; }
+
+  const text = `NEW DEMO APPLICATION%0AName: ${name}%0APhone: +256${phone}%0AAmount: UGX ${amount}%0APurpose: ${purpose}`;
+  
+  // Your WhatsApp Business link
+  window.open(`https://wa.me/message/3EYTBMGJYRLZE1?text=${text}`, '_blank');
+}
+</script>
+</body>
+</html>
